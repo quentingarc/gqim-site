@@ -1,7 +1,12 @@
 export const services = {
   sitesInternet: {
     number: "01",
+    slug: "/services/sites-internet",
+    iconKey: "site",
     eyebrow: "Sites internet",
+    summary:
+      "Des sites vitrines modernes qui racontent votre activité, renforcent votre image et transforment les visites en contacts.",
+    bullets: ["Site vitrine & corporate", "Landing page", "Refonte & optimisation"],
     title: "Un site qui présente votre valeur et donne envie de vous contacter.",
     intro:
       "Je conçois des sites vitrines rapides, élégants et structurés autour de vos objectifs commerciaux. Chaque page est pensée pour rassurer vos visiteurs, expliquer clairement votre offre et faciliter la prise de contact.",
@@ -34,7 +39,12 @@ export const services = {
   },
   applications: {
     number: "02",
+    slug: "/services/applications-web-mobile",
+    iconKey: "app",
     eyebrow: "Applications web / mobile",
+    summary:
+      "Des applications fluides et intuitives qui simplifient vos processus et donnent vie à vos services.",
+    bullets: ["Interface métier", "Plateforme & dashboard", "Application responsive"],
     title: "Une application intuitive pour transformer une idée en usage concret.",
     intro:
       "Je développe des interfaces web et mobile fluides, conçues autour des besoins réels de vos utilisateurs. De l’espace client à l’outil métier, chaque fonctionnalité répond à un objectif précis.",
@@ -67,7 +77,16 @@ export const services = {
   },
   custom: {
     number: "03",
+    slug: "/services/developpement-sur-mesure",
+    iconKey: "custom",
     eyebrow: "Développement sur mesure",
+    summary:
+      "Une solution technique construite autour de vos contraintes, sans modèle générique ni fonctionnalités inutiles.",
+    bullets: [
+      "Intégration front-end",
+      "Fonctionnalités spécifiques",
+      "Maintenance & évolution",
+    ],
     title: "Une solution construite autour de votre fonctionnement, pas l’inverse.",
     intro:
       "Lorsque les outils standards ne répondent pas exactement à votre besoin, je conçois une solution dédiée. Front-end, back-end et DevOps sont pensés ensemble pour obtenir un produit fiable et durable.",

@@ -1,58 +1,31 @@
 import Link from "next/link";
+import { methodSteps } from "@/data/method";
 
-const steps = [
-  {
-    number: "01",
-    title: "Écoute & cadrage",
-    description:
-      "Nous commençons par votre activité, vos utilisateurs et vos objectifs. Cette étape permet de transformer une idée parfois large en un périmètre clair, réaliste et priorisé.",
-    outputs: ["Brief structuré", "Objectifs du projet", "Périmètre fonctionnel"],
-    icon: (
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M4 5h16v11H8l-4 4V5Z" />
-        <path d="M8 9h8M8 12h5" />
-      </svg>
-    ),
-  },
-  {
-    number: "02",
-    title: "Conception & expérience",
-    description:
-      "Je structure les contenus, les parcours et les écrans avant de développer. Vous visualisez la direction du projet tôt et nous ajustons les choix importants ensemble.",
-    outputs: ["Architecture des pages", "Parcours utilisateur", "Direction visuelle"],
-    icon: (
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <rect x="3" y="3" width="18" height="18" rx="2" />
-        <path d="M3 8h18M8 8v13M11 12h6M11 16h4" />
-      </svg>
-    ),
-  },
-  {
-    number: "03",
-    title: "Développement",
-    description:
-      "Je construis une solution propre, rapide et responsive. Les avancées sont partagées régulièrement pour que vous puissiez suivre le projet et valider chaque étape.",
-    outputs: ["Front-end & back-end", "Version responsive", "Points d’avancement"],
-    icon: (
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="m8 8-4 4 4 4M16 8l4 4-4 4M14 4l-4 16" />
-      </svg>
-    ),
-  },
-  {
-    number: "04",
-    title: "Tests & mise en ligne",
-    description:
-      "Avant le lancement, je contrôle le fonctionnement, les performances et l’affichage sur les différents appareils. La mise en ligne est préparée et accompagnée.",
-    outputs: ["Tests complets", "Optimisation", "Déploiement & suivi"],
-    icon: (
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M14 5c2.5-2.5 5-2 5-2s.5 2.5-2 5l-5 5-4-4 6-4Z" />
-        <path d="m8 9-3 1-2 3 5 1M12 13l-1 5-3 2-1-5M9 15l-2 2" />
-      </svg>
-    ),
-  },
-];
+const methodIcons = {
+  listen: (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M4 5h16v11H8l-4 4V5Z" />
+      <path d="M8 9h8M8 12h5" />
+    </svg>
+  ),
+  design: (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <rect x="3" y="3" width="18" height="18" rx="2" />
+      <path d="M3 8h18M8 8v13M11 12h6M11 16h4" />
+    </svg>
+  ),
+  development: (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="m8 8-4 4 4 4M16 8l4 4-4 4M14 4l-4 16" />
+    </svg>
+  ),
+  launch: (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M14 5c2.5-2.5 5-2 5-2s.5 2.5-2 5l-5 5-4-4 6-4Z" />
+      <path d="m8 9-3 1-2 3 5 1M12 13l-1 5-3 2-1-5M9 15l-2 2" />
+    </svg>
+  ),
+};
 
 const principles = [
   {
@@ -130,10 +103,12 @@ export default function MethodePage() {
             <h2>Vous savez toujours où nous allons.</h2>
           </div>
           <div className="method-step-list">
-            {steps.map((step) => (
+            {methodSteps.map((step) => (
               <article className="method-step-card" key={step.number}>
                 <div className="method-step-number">{step.number}</div>
-                <div className="method-step-icon">{step.icon}</div>
+                <div className="method-step-icon">
+                  {methodIcons[step.iconKey]}
+                </div>
                 <div className="method-step-copy">
                   <h3>{step.title}</h3>
                   <p>{step.description}</p>

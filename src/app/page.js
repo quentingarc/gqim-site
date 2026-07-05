@@ -1,8 +1,8 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import ProjectQuestionnaire from "@components/ProjectQuestionnaire";
+import { services } from "@/data/services";
+import { methodSteps } from "@/data/method";
 
 const Arrow = () => (
   <svg viewBox="0 0 20 20" aria-hidden="true">
@@ -30,271 +30,7 @@ const serviceIcons = {
   ),
 };
 
-const questionnaireSteps = [
-  {
-    key: "project",
-    label: "Votre projet",
-    question: "Que souhaitez-vous créer ?",
-    choices: [
-      "Site vitrine",
-      "Application web / mobile",
-      "Refonte d’un site",
-      "Développement sur mesure",
-    ],
-  },
-  {
-    key: "goal",
-    label: "Votre objectif",
-    question: "Quel est votre objectif principal ?",
-    choices: [
-      "Présenter mon activité",
-      "Obtenir plus de contacts",
-      "Vendre en ligne",
-      "Créer un outil métier",
-    ],
-  },
-  {
-    key: "budget",
-    label: "Votre cadre",
-    question: "Quel budget envisagez-vous ?",
-    choices: [
-      "Moins de 1 500 €",
-      "1 500 € – 3 000 €",
-      "3 000 € – 6 000 €",
-      "Plus de 6 000 €",
-    ],
-  },
-];
-
-function ProjectQuestionnaire() {
-  const [step, setStep] = useState(0);
-  const [form, setForm] = useState({
-    project: "",
-    goal: "",
-    budget: "",
-    timeline: "",
-    name: "",
-    email: "",
-    company: "",
-    details: "",
-  });
-
-  const update = (key, value) => {
-    setForm((current) => ({ ...current, [key]: value }));
-  };
-
-  const currentStep = questionnaireSteps[step];
-  const canContinue =
-    step < 3
-      ? Boolean(form[currentStep?.key])
-      : Boolean(form.name.trim() && form.email.trim());
-
-  const sendRequest = (event) => {
-    event.preventDefault();
-    if (step !== 3 || !canContinue) return;
-
-    const lowerFirst = (value) =>
-      value ? value.charAt(0).toLowerCase() + value.slice(1) : "";
-    const timelineText = {
-      "Dès que possible": "dès que possible",
-      "Dans 1 à 2 mois": "dans un délai de 1 à 2 mois",
-      "Dans 3 à 6 mois": "dans un délai de 3 à 6 mois",
-      "Je me renseigne": "sans calendrier précis pour le moment",
-    };
-    const budgetText = {
-      "Moins de 1 500 €": "inférieur à 1 500 €",
-      "1 500 € – 3 000 €": "compris entre 1 500 € et 3 000 €",
-      "3 000 € – 6 000 €": "compris entre 3 000 € et 6 000 €",
-      "Plus de 6 000 €": "supérieur à 6 000 €",
-    };
-    const companyText = form.company
-      ? ` et je représente l’entreprise ${form.company}`
-      : "";
-    const detailsText = form.details
-      ? `\n\nPour vous donner un peu plus de contexte :\n${form.details}`
-      : "";
-
-    const subject = encodeURIComponent(
-      `Nouveau projet ${form.project} — ${form.name}`,
-    );
-    const body = encodeURIComponent(
-      [
-        "Bonjour Quentin,",
-        "",
-        `Je m’appelle ${form.name}${companyText}. Je souhaite vous parler d’un projet de type « ${form.project} » afin de ${lowerFirst(form.goal)}.`,
-        "",
-        `Pour ce projet, j’envisage un budget ${budgetText[form.budget] || lowerFirst(form.budget)}. Je souhaiterais idéalement le lancer ${timelineText[form.timeline] || "selon un calendrier à définir ensemble"}.`,
-        detailsText,
-        "",
-        `Vous pouvez me répondre directement à l’adresse ${form.email}.`,
-        "",
-        "Merci et à bientôt,",
-        form.name,
-      ].join("\n"),
-    );
-
-    window.location.href = `mailto:gqinformatiques@gmail.com?subject=${subject}&body=${body}`;
-  };
-
-  return (
-    <form className="project-form" onSubmit={sendRequest}>
-      <div className="form-progress" aria-label={`Étape ${step + 1} sur 4`}>
-        {[0, 1, 2, 3].map((item) => (
-          <span
-            className={item <= step ? "is-active" : ""}
-            key={item}
-          />
-        ))}
-      </div>
-
-      <div className="form-step-meta">
-        <span>0{step + 1}</span>
-        <small>
-          {step < 3 ? currentStep.label : "Vos coordonnées"}
-        </small>
-      </div>
-
-      {step < 3 ? (
-        <div className="form-panel">
-          <h3>{currentStep.question}</h3>
-          <div className="choice-grid">
-            {currentStep.choices.map((choice) => (
-              <button
-                className={form[currentStep.key] === choice ? "is-selected" : ""}
-                type="button"
-                key={choice}
-                onClick={() => update(currentStep.key, choice)}
-              >
-                <span />
-                {choice}
-              </button>
-            ))}
-          </div>
-
-          {step === 2 && (
-            <label className="timeline-field">
-              <span>Quand souhaitez-vous lancer le projet ?</span>
-              <select
-                value={form.timeline}
-                onChange={(event) => update("timeline", event.target.value)}
-              >
-                <option value="">À définir ensemble</option>
-                <option value="Dès que possible">Dès que possible</option>
-                <option value="Dans 1 à 2 mois">Dans 1 à 2 mois</option>
-                <option value="Dans 3 à 6 mois">Dans 3 à 6 mois</option>
-                <option value="Je me renseigne">Je me renseigne</option>
-              </select>
-            </label>
-          )}
-        </div>
-      ) : (
-        <div className="form-panel contact-fields">
-          <h3>À qui dois-je répondre ?</h3>
-          <div className="field-row">
-            <label>
-              <span>Votre nom *</span>
-              <input
-                type="text"
-                value={form.name}
-                onChange={(event) => update("name", event.target.value)}
-                placeholder="Jean Dupont"
-                required
-              />
-            </label>
-            <label>
-              <span>Votre e-mail *</span>
-              <input
-                type="email"
-                value={form.email}
-                onChange={(event) => update("email", event.target.value)}
-                placeholder="jean@entreprise.fr"
-                required
-              />
-            </label>
-          </div>
-          <label>
-            <span>Entreprise</span>
-            <input
-              type="text"
-              value={form.company}
-              onChange={(event) => update("company", event.target.value)}
-              placeholder="Nom de votre entreprise"
-            />
-          </label>
-          <label>
-            <span>Un détail à ajouter ?</span>
-            <textarea
-              value={form.details}
-              onChange={(event) => update("details", event.target.value)}
-              placeholder="Parlez-moi librement de votre idée, de vos besoins ou de vos contraintes…"
-              rows={4}
-            />
-          </label>
-        </div>
-      )}
-
-      <div className="form-navigation">
-        {step > 0 ? (
-          <button
-            className="form-back"
-            type="button"
-            onClick={(event) => {
-              event.preventDefault();
-              setStep((current) => current - 1);
-            }}
-          >
-            Retour
-          </button>
-        ) : (
-          <span />
-        )}
-        {step < 3 ? (
-          <button
-            className="form-next"
-            type="button"
-            key="continue-questionnaire"
-            disabled={!canContinue}
-            onClick={(event) => {
-              event.preventDefault();
-              setStep((current) => current + 1);
-            }}
-          >
-            Continuer <Arrow />
-          </button>
-        ) : (
-          <button
-            className="form-next"
-            type="submit"
-            key="submit-questionnaire"
-            disabled={!canContinue}
-          >
-            Préparer ma demande <Arrow />
-          </button>
-        )}
-      </div>
-    </form>
-  );
-}
-
 export default function Home() {
-  useEffect(() => {
-    const items = document.querySelectorAll("[data-reveal]");
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.14 },
-    );
-
-    items.forEach((item) => observer.observe(item));
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <>
       <section className="hero" id="accueil">
@@ -400,59 +136,28 @@ export default function Home() {
           </div>
 
           <div className="service-grid">
-            <article className="service-card featured" data-reveal>
-              <div className="service-number">01</div>
-              <div className="service-icon">{serviceIcons.site}</div>
-              <h3>Sites internet</h3>
-              <p>
-                Des sites vitrines modernes qui racontent votre activité,
-                renforcent votre image et transforment les visites en contacts.
-              </p>
-              <ul>
-                <li>Site vitrine & corporate</li>
-                <li>Landing page</li>
-                <li>Refonte & optimisation</li>
-              </ul>
-              <Link href="/services/sites-internet">
-                Découvrir ce service <Arrow />
-              </Link>
-            </article>
-
-            <article className="service-card" data-reveal>
-              <div className="service-number">02</div>
-              <div className="service-icon">{serviceIcons.app}</div>
-              <h3>Applications web / mobile</h3>
-              <p>
-                Des applications fluides et intuitives qui simplifient vos
-                processus et donnent vie à vos services.
-              </p>
-              <ul>
-                <li>Interface métier</li>
-                <li>Plateforme & dashboard</li>
-                <li>Application responsive</li>
-              </ul>
-              <Link href="/services/applications-web-mobile">
-                Découvrir ce service <Arrow />
-              </Link>
-            </article>
-
-            <article className="service-card" data-reveal>
-              <div className="service-number">03</div>
-              <div className="service-icon">{serviceIcons.custom}</div>
-              <h3>Développement sur mesure</h3>
-              <p>
-                Une solution technique construite autour de vos contraintes,
-                sans modèle générique ni fonctionnalités inutiles.
-              </p>
-              <ul>
-                <li>Intégration front-end</li>
-                <li>Fonctionnalités spécifiques</li>
-                <li>Maintenance & évolution</li>
-              </ul>
-              <Link href="/services/developpement-sur-mesure">
-                Découvrir ce service <Arrow />
-              </Link>
-            </article>
+            {Object.values(services).map((service, index) => (
+              <article
+                className={`service-card${index === 0 ? " featured" : ""}`}
+                data-reveal
+                key={service.slug}
+              >
+                <div className="service-number">{service.number}</div>
+                <div className="service-icon">
+                  {serviceIcons[service.iconKey]}
+                </div>
+                <h3>{service.eyebrow}</h3>
+                <p>{service.summary}</p>
+                <ul>
+                  {service.bullets.map((bullet) => (
+                    <li key={bullet}>{bullet}</li>
+                  ))}
+                </ul>
+                <Link href={service.slug}>
+                  Découvrir ce service <Arrow />
+                </Link>
+              </article>
+            ))}
           </div>
         </div>
       </section>
@@ -601,17 +306,12 @@ export default function Home() {
             <h2>Simple, transparente, <em>sans zones floues.</em></h2>
           </div>
           <div className="process-track">
-            {[
-              ["01", "Écoute", "Nous clarifions votre besoin, vos objectifs et vos utilisateurs."],
-              ["02", "Conception", "Je structure l’expérience et définis une direction visuelle forte."],
-              ["03", "Développement", "Je construis une interface rapide, fiable et responsive."],
-              ["04", "Mise en ligne", "Je teste, optimise et vous accompagne après le lancement."],
-            ].map(([number, title, text]) => (
-              <article className="process-step" key={number} data-reveal>
-                <div className="step-number">{number}</div>
+            {methodSteps.map((step) => (
+              <article className="process-step" key={step.number} data-reveal>
+                <div className="step-number">{step.number}</div>
                 <div className="step-line" />
-                <h3>{title}</h3>
-                <p>{text}</p>
+                <h3>{step.shortTitle}</h3>
+                <p>{step.shortText}</p>
               </article>
             ))}
           </div>

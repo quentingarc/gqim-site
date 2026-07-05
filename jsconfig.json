@@ -2,13 +2,7 @@
   "compilerOptions": {
     "paths": {
       "@/*": ["./src/*"],
-      "@components/*": ["./src/components/*"],
-      "@styles/*": ["./src/styles/*"],
-      "@about/*": ["./src/pages/about/*"],
-      "@contact/*": ["./src/pages/contact/*"],
-      "@portfolio/*": ["./src/pages/portfolio/*"],
-      "@services/*": ["./src/pages/services/*"],
-      "@images/*": ["./src/public/images/*"],
+      "@components/*": ["./src/components/*"]
     }
   }
 }
