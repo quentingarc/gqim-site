@@ -8,6 +8,7 @@
       "@contact/*": ["./src/pages/contact/*"],
       "@portfolio/*": ["./src/pages/portfolio/*"],
       "@services/*": ["./src/pages/services/*"],
+      "@images/*": ["./src/public/images/*"],
     }
   }
 }
