@@ -32,10 +32,10 @@ export default function Header() {
           <span className="header-logo">
             <Image
               className="header-logo-image"
-              src="/logo.png"
+              src="/logo-header.webp"
               alt="GQIM"
-              width={338}
-              height={225}
+              width={300}
+              height={120}
               priority
             />
           </span>
