@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const steps = [
   {
     number: "01",
@@ -97,12 +99,12 @@ export default function MethodePage() {
       <section className="method-hero">
         <div className="method-hero-grid" aria-hidden="true" />
         <div className="container">
-          <a className="service-back" href="/#methode">
+          <Link className="service-back" href="/#methode">
             <svg viewBox="0 0 20 20" aria-hidden="true">
               <path d="M16 10H5M9 5l-5 5 5 5" />
             </svg>
             Retour à l’accueil
-          </a>
+          </Link>
           <div className="method-hero-content">
             <span className="section-kicker">Ma façon de travailler</span>
             <h1>Une méthode claire pour avancer sans perdre de temps.</h1>
@@ -170,12 +172,12 @@ export default function MethodePage() {
         <div className="container">
           <span className="section-kicker light">Passons à la première étape</span>
           <h2>Parlez-moi de votre projet, je vous aide à le cadrer.</h2>
-          <a href="/#contact">
+          <Link href="/#contact">
             Démarrer le questionnaire
             <svg viewBox="0 0 20 20" aria-hidden="true">
               <path d="M4 10h11M11 5l5 5-5 5" />
             </svg>
-          </a>
+          </Link>
         </div>
       </section>
     </article>

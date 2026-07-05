@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -27,7 +28,7 @@ export default function Header() {
   return (
     <header className={`site-header ${scrolled ? "is-scrolled" : ""}`}>
       <div className="container header-inner">
-        <a className="brand header-brand" href="/#accueil" onClick={close} aria-label="GQIM — Accueil">
+        <Link className="brand header-brand" href="/#accueil" onClick={close} aria-label="GQIM — Accueil">
           <span className="header-logo">
             <Image
               className="header-logo-image"
@@ -38,7 +39,7 @@ export default function Header() {
               priority
             />
           </span>
-        </a>
+        </Link>
 
         <button
           className={`menu-toggle ${open ? "is-open" : ""}`}
@@ -50,11 +51,11 @@ export default function Header() {
         </button>
 
         <nav className={open ? "is-open" : ""} aria-label="Navigation principale">
-          <a href="/#services" onClick={close}>Services</a>
-          <a href="/#realisations" onClick={close}>Réalisations</a>
-          <a href="/#expertise" onClick={close}>Expertise</a>
-          <a href="/methode" onClick={close}>Méthode</a>
-          <a href="/#apropos" onClick={close}>À propos</a>
+          <Link href="/#services" onClick={close}>Services</Link>
+          <Link href="/#realisations" onClick={close}>Réalisations</Link>
+          <Link href="/#expertise" onClick={close}>Expertise</Link>
+          <Link href="/methode" onClick={close}>Méthode</Link>
+          <Link href="/#apropos" onClick={close}>À propos</Link>
         </nav>
 
         <div className="header-actions">
@@ -73,12 +74,12 @@ export default function Header() {
               <path d="M20 15.2A8.3 8.3 0 0 1 8.8 4a8.3 8.3 0 1 0 11.2 11.2Z" />
             </svg>
           </button>
-          <a className="header-cta" href="/#contact">
+          <Link className="header-cta" href="/#contact">
             Parlons de votre projet
             <svg viewBox="0 0 20 20" aria-hidden="true">
               <path d="M4 10h11M11 5l5 5-5 5" />
             </svg>
-          </a>
+          </Link>
         </div>
       </div>
     </header>

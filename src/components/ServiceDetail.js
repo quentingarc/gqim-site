@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const detailIcons = [
   <svg viewBox="0 0 24 24" aria-hidden="true" key="target">
     <circle cx="12" cy="12" r="8" />
@@ -24,12 +26,12 @@ export default function ServiceDetail({ service }) {
       <section className="service-detail-hero">
         <div className="service-detail-grid" aria-hidden="true" />
         <div className="container">
-          <a className="service-back" href="/#services">
+          <Link className="service-back" href="/#services">
             <svg viewBox="0 0 20 20" aria-hidden="true">
               <path d="M16 10H5M9 5l-5 5 5 5" />
             </svg>
             Tous les services
-          </a>
+          </Link>
           <div className="service-detail-heading">
             <div>
               <span className="section-kicker">{service.eyebrow}</span>
@@ -76,12 +78,12 @@ export default function ServiceDetail({ service }) {
                   <li key={item}>{item}</li>
                 ))}
               </ul>
-              <a href="/#contact">
+              <Link href="/#contact">
                 Décrire mon projet
                 <svg viewBox="0 0 20 20" aria-hidden="true">
                   <path d="M4 10h11M11 5l5 5-5 5" />
                 </svg>
-              </a>
+              </Link>
             </aside>
           </div>
         </div>
@@ -91,12 +93,12 @@ export default function ServiceDetail({ service }) {
         <div className="container">
           <span className="section-kicker light">Votre projet commence ici</span>
           <h2>Discutons de ce que nous pouvons construire ensemble.</h2>
-          <a href="/#contact">
+          <Link href="/#contact">
             Répondre au questionnaire
             <svg viewBox="0 0 20 20" aria-hidden="true">
               <path d="M4 10h11M11 5l5 5-5 5" />
             </svg>
-          </a>
+          </Link>
         </div>
       </section>
     </article>

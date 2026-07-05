@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const Arrow = () => (
   <svg viewBox="0 0 20 20" aria-hidden="true">
@@ -412,9 +413,9 @@ export default function Home() {
                 <li>Landing page</li>
                 <li>Refonte & optimisation</li>
               </ul>
-              <a href="/services/sites-internet">
+              <Link href="/services/sites-internet">
                 Découvrir ce service <Arrow />
-              </a>
+              </Link>
             </article>
 
             <article className="service-card" data-reveal>
@@ -430,9 +431,9 @@ export default function Home() {
                 <li>Plateforme & dashboard</li>
                 <li>Application responsive</li>
               </ul>
-              <a href="/services/applications-web-mobile">
+              <Link href="/services/applications-web-mobile">
                 Découvrir ce service <Arrow />
-              </a>
+              </Link>
             </article>
 
             <article className="service-card" data-reveal>
@@ -448,9 +449,9 @@ export default function Home() {
                 <li>Fonctionnalités spécifiques</li>
                 <li>Maintenance & évolution</li>
               </ul>
-              <a href="/services/developpement-sur-mesure">
+              <Link href="/services/developpement-sur-mesure">
                 Découvrir ce service <Arrow />
-              </a>
+              </Link>
             </article>
           </div>
         </div>
@@ -614,9 +615,9 @@ export default function Home() {
               </article>
             ))}
           </div>
-          <a className="process-more" href="/methode">
+          <Link className="process-more" href="/methode">
             Découvrir ma méthode <Arrow />
-          </a>
+          </Link>
         </div>
       </section>
 
