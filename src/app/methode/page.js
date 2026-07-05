@@ -88,10 +88,15 @@ export default function MethodePage() {
             </p>
           </div>
           <div className="method-summary">
-            <span><strong>01</strong>Comprendre</span>
-            <span><strong>02</strong>Concevoir</span>
-            <span><strong>03</strong>Développer</span>
-            <span><strong>04</strong>Lancer</span>
+            {methodSteps.map((step) => (
+              <div className="method-summary-step" key={step.number}>
+                <span>{step.number}</span>
+                <div>
+                  <small>Étape</small>
+                  <strong>{step.shortTitle}</strong>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

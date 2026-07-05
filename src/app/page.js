@@ -77,7 +77,13 @@ export default function Home() {
 
               <div className="profile-identity">
                 <div className="profile-avatar">
-                  <span>QG</span>
+                  <Image
+                    src="/quentin-garcia.webp"
+                    alt="Portrait de Quentin Garcia"
+                    width={320}
+                    height={320}
+                    sizes="70px"
+                  />
                 </div>
                 <div>
                   <small>Fondateur & développeur front-end</small>

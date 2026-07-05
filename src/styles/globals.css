@@ -568,11 +568,11 @@ html[data-theme="dark"] .theme-toggle .moon-icon {
   50% { box-shadow: 0 0 20px 4px rgba(119, 190, 231, 0.4); }
 }
 
-.profile-avatar span {
-  font-family: var(--font-title);
-  font-size: 19px;
-  font-weight: 500;
-  letter-spacing: 0.08em;
+.profile-avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  object-fit: cover;
 }
 
 .profile-identity small {
@@ -1010,7 +1010,7 @@ html[data-theme="dark"] .theme-toggle .moon-icon {
   display: inline-flex;
   align-items: center;
   gap: 9px;
-  color: var(--ink);
+  color: #132631;
   border-radius: 4px;
   background: white;
   font-size: 12px;
@@ -2252,7 +2252,7 @@ html[data-theme="dark"] .theme-toggle .moon-icon {
 
 .method-hero-content {
   max-width: 900px;
-  padding: 68px 0 75px;
+  padding: 68px 0 52px;
 }
 
 .method-hero-content h1 {
@@ -2273,30 +2273,68 @@ html[data-theme="dark"] .theme-toggle .moon-icon {
 }
 
 .method-summary {
-  min-height: 94px;
+  --method-summary-surface: rgba(255, 255, 255, 0.42);
+  position: relative;
+  padding-bottom: 52px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  border-top: 1px solid var(--line);
-  border-left: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.62);
-  backdrop-filter: blur(12px);
+  gap: 24px;
 }
 
-.method-summary span {
-  padding: 0 24px;
+.method-summary-step {
+  position: relative;
   display: flex;
-  align-items: center;
-  gap: 14px;
-  color: #53656e;
-  border-right: 1px solid var(--line);
-  font-size: 11px;
-  font-weight: 600;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 13px;
 }
 
-.method-summary strong {
-  color: #62a7cf;
+.method-summary-step::after {
+  content: "";
+  position: absolute;
+  top: 21px;
+  left: 54px;
+  right: -24px;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(98, 167, 207, 0.55), var(--line));
+}
+
+.method-summary-step:last-child::after {
+  display: none;
+}
+
+.method-summary-step > span {
+  position: relative;
+  z-index: 1;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  color: #438db8;
+  border: 1px solid rgba(98, 167, 207, 0.32);
+  border-radius: 50%;
+  background: rgba(247, 249, 249, 0.92);
   font-family: var(--font-title);
   font-size: 11px;
+  font-weight: 700;
+  box-shadow: 0 8px 24px rgba(30, 67, 84, 0.08);
+}
+
+.method-summary-step small {
+  display: block;
+  margin-bottom: 2px;
+  color: #8a9aa1;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.method-summary-step strong {
+  color: #344c57;
+  font-family: var(--font-title);
+  font-size: 14px;
+  font-weight: 600;
 }
 
 .method-steps {
@@ -2716,11 +2754,21 @@ html[data-theme="dark"] .theme-toggle .moon-icon {
 
   .method-summary {
     grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
   }
 
-  .method-summary span {
-    min-height: 72px;
-    border-bottom: 1px solid var(--line);
+  .method-summary-step {
+    min-height: 78px;
+    padding: 16px;
+    flex-direction: row;
+    align-items: center;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--method-summary-surface);
+  }
+
+  .method-summary-step::after {
+    display: none;
   }
 
   .method-step-card {
@@ -2913,9 +2961,9 @@ html[data-theme="dark"] .theme-toggle .moon-icon {
     grid-template-columns: 1fr;
   }
 
-  .method-summary span {
-    min-height: 62px;
-    border-right: 0;
+  .method-summary-step {
+    min-height: 70px;
+    padding: 12px 14px;
   }
 
   .method-step-card {
@@ -3161,12 +3209,23 @@ html[data-theme="dark"] {
     color: #9fb0b8;
   }
 
-  .method-summary {
-    background: rgba(15, 39, 49, 0.72);
+  .method-summary-step > span {
+    color: #8ed0f3;
+    border-color: rgba(142, 208, 243, 0.28);
+    background: rgba(16, 43, 54, 0.9);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
   }
 
-  .method-summary span {
-    color: #c1ced3;
+  .method-summary {
+    --method-summary-surface: rgba(15, 39, 49, 0.62);
+  }
+
+  .method-summary-step small {
+    color: #718791;
+  }
+
+  .method-summary-step strong {
+    color: #d8e4e8;
   }
 
   .method-step-card:hover {
