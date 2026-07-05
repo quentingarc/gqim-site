@@ -34,6 +34,10 @@ body {
   overflow-x: hidden;
 }
 
+body.menu-is-open {
+  overflow: hidden;
+}
+
 body,
 button,
 a {
@@ -2600,6 +2604,19 @@ html[data-theme="dark"] .theme-toggle .moon-icon {
     height: 72px;
   }
 
+  .site-header.menu-open {
+    background: transparent;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .header-brand,
+  .header-actions {
+    position: relative;
+    z-index: 103;
+  }
+
   .menu-toggle {
     position: relative;
     z-index: 103;
@@ -2631,15 +2648,21 @@ html[data-theme="dark"] .theme-toggle .moon-icon {
 
   .site-header nav {
     position: fixed;
+    z-index: 102;
     inset: 0;
-    padding: 120px 32px 50px;
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding: 108px 32px 38px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 23px;
+    justify-content: center;
+    gap: 0;
+    overflow-y: auto;
     visibility: hidden;
     opacity: 0;
-    background: rgba(248, 250, 250, 0.98);
+    background: #f8fafa;
     transition: opacity 0.25s, visibility 0.25s;
   }
 
@@ -2649,8 +2672,40 @@ html[data-theme="dark"] .theme-toggle .moon-icon {
   }
 
   .site-header nav a {
+    width: 100%;
+    padding: 15px 0;
+    opacity: 0;
+    color: #213944;
+    border-bottom: 1px solid rgba(19, 38, 49, 0.1);
     font-family: var(--font-title);
-    font-size: 28px;
+    font-size: clamp(28px, 9vw, 38px);
+    font-weight: 500;
+    line-height: 1.15;
+    transform: translateY(12px);
+    transition: opacity 0.3s ease, transform 0.3s ease, color 0.2s ease;
+  }
+
+  .site-header nav a::after {
+    display: none;
+  }
+
+  .site-header nav.is-open a {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .site-header nav.is-open a:nth-child(2) { transition-delay: 0.04s; }
+  .site-header nav.is-open a:nth-child(3) { transition-delay: 0.08s; }
+  .site-header nav.is-open a:nth-child(4) { transition-delay: 0.12s; }
+  .site-header nav.is-open a:nth-child(5) { transition-delay: 0.16s; }
+
+  html[data-theme="dark"] .site-header nav {
+    background: #091a22;
+  }
+
+  html[data-theme="dark"] .site-header nav a {
+    color: #e4edf0;
+    border-color: rgba(222, 239, 245, 0.12);
   }
 
   .header-cta {
@@ -3555,7 +3610,7 @@ html[data-theme="dark"] {
 
   @media (max-width: 860px) {
     .site-header nav {
-      background: rgba(9, 26, 34, 0.98);
+      background: #091a22;
     }
   }
 }

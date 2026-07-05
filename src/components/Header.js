@@ -17,6 +17,11 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    document.body.classList.toggle("menu-is-open", open);
+    return () => document.body.classList.remove("menu-is-open");
+  }, [open]);
+
   const close = () => setOpen(false);
   const toggleTheme = () => {
     const nextTheme = theme === "dark" ? "light" : "dark";
@@ -26,7 +31,9 @@ export default function Header() {
   };
 
   return (
-    <header className={`site-header ${scrolled ? "is-scrolled" : ""}`}>
+    <header
+      className={`site-header ${scrolled ? "is-scrolled" : ""} ${open ? "menu-open" : ""}`}
+    >
       <div className="container header-inner">
         <Link className="brand header-brand" href="/#accueil" onClick={close} aria-label="GQIM — Accueil">
           <span className="header-logo">
@@ -45,12 +52,17 @@ export default function Header() {
           className={`menu-toggle ${open ? "is-open" : ""}`}
           aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
           aria-expanded={open}
+          aria-controls="main-navigation"
           onClick={() => setOpen(!open)}
         >
           <span /><span />
         </button>
 
-        <nav className={open ? "is-open" : ""} aria-label="Navigation principale">
+        <nav
+          id="main-navigation"
+          className={open ? "is-open" : ""}
+          aria-label="Navigation principale"
+        >
           <Link href="/#services" onClick={close}>Services</Link>
           <Link href="/#realisations" onClick={close}>Réalisations</Link>
           <Link href="/#expertise" onClick={close}>Expertise</Link>
