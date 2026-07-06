@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
+import { trackProjectRequest } from "@components/Analytics";
 
 const questionnaireSteps = [
   {
@@ -131,6 +133,11 @@ export default function ProjectQuestionnaire() {
       ].join("\n"),
     );
 
+    trackProjectRequest({
+      project: form.project,
+      budget: form.budget,
+      timeline: form.timeline,
+    });
     window.location.href = `mailto:gqinformatiques@gmail.com?subject=${subject}&body=${body}`;
   };
 
@@ -264,6 +271,11 @@ export default function ProjectQuestionnaire() {
           </button>
         )}
       </div>
+      <p className="form-privacy">
+        En continuant, vous préparez un e-mail dans votre messagerie. Vos
+        informations servent uniquement à répondre à votre demande.{" "}
+        <Link href="/politique-de-confidentialite">En savoir plus</Link>
+      </p>
     </form>
   );
 }

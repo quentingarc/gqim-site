@@ -61,9 +61,16 @@ const principles = [
 ];
 
 export const metadata = {
-  title: "Méthode de travail — GQIM",
+  title: "Méthode de travail",
   description:
     "Découvrez la méthode GQIM : cadrage, conception, développement, tests, mise en ligne et suivi.",
+  alternates: { canonical: "/methode" },
+  openGraph: {
+    title: "Méthode de travail | GQIM",
+    description:
+      "Cadrage, conception, développement, tests, mise en ligne et suivi.",
+    url: "/methode",
+  },
 };
 
 export default function MethodePage() {

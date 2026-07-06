@@ -1,7 +1,7 @@
 export const services = {
   sitesInternet: {
     number: "01",
-    slug: "/services/sites-internet",
+    slug: "/creation-site-internet",
     iconKey: "site",
     eyebrow: "Sites internet",
     summary:
@@ -39,7 +39,7 @@ export const services = {
   },
   applications: {
     number: "02",
-    slug: "/services/applications-web-mobile",
+    slug: "/application-web",
     iconKey: "app",
     eyebrow: "Applications web / mobile",
     summary:
@@ -77,7 +77,7 @@ export const services = {
   },
   custom: {
     number: "03",
-    slug: "/services/developpement-sur-mesure",
+    slug: "/developpeur-web-freelance",
     iconKey: "custom",
     eyebrow: "Développement sur mesure",
     summary:

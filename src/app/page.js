@@ -4,6 +4,8 @@ import ProjectQuestionnaire from "@components/ProjectQuestionnaire";
 import { services } from "@/data/services";
 import { methodSteps } from "@/data/method";
 
+const showAllProjectsLink = false;
+
 const Arrow = () => (
   <svg viewBox="0 0 20 20" aria-hidden="true">
     <path d="M4 10h11M11 5l5 5-5 5" />
@@ -43,28 +45,28 @@ export default function Home() {
               Quentin Garcia · Fondateur de GQIM
             </div>
             <h1>
-              Je transforme vos idées en
-              <span> expériences digitales.</span>
+              Création de sites web et applications
+              <span> sur mesure.</span>
             </h1>
             <p>
-              Je conçois des sites vitrines, des applications web / mobile et
-              des solutions sur mesure pour les entreprises qui veulent une
-              présence digitale claire, rapide et mémorable.
+              Pour indépendants, artisans et petites entreprises. Je conçois
+              des outils modernes, rapides et pensés pour transformer vos
+              visiteurs en clients.
             </p>
             <div className="hero-actions">
               <a className="button button-primary" href="#contact">
-                Parler de votre projet <Arrow />
+                Demander un devis gratuit <Arrow />
               </a>
               <a className="button button-ghost" href="#services">
                 Découvrir mes services
               </a>
             </div>
             <div className="hero-trust">
-              <span>Design soigné</span>
+              <span>SEO de base inclus</span>
               <i />
-              <span>Code performant</span>
+              <span>Responsive mobile</span>
               <i />
-              <span>100% sur mesure</span>
+              <span>Interlocuteur unique</span>
             </div>
           </div>
 
@@ -86,14 +88,14 @@ export default function Home() {
                   />
                 </div>
                 <div>
-                  <small>Fondateur & développeur front-end</small>
+                  <small>Fondateur & développeur full-stack</small>
                   <h2>Quentin Garcia</h2>
                 </div>
               </div>
 
               <p className="profile-intro">
-                J’accompagne les petites comme les grandes entreprises dans la
-                création d’expériences numériques utiles, soignées et pensées
+                J’accompagne indépendants, artisans et petites entreprises dans
+                la création d’expériences numériques utiles, soignées et pensées
                 pour leurs clients.
               </p>
 
@@ -172,8 +174,8 @@ export default function Home() {
         <div className="container">
           <div className="section-heading project-heading" data-reveal>
             <div>
-              <span className="section-kicker">Projet réalisé</span>
-              <h2>Du concret, pensé pour <em>un vrai métier.</em></h2>
+              <span className="section-kicker">Mes réalisations</span>
+              <h2>Du concret, pensé pour <em>de vrais usages.</em></h2>
             </div>
             <p>
               Une présence digitale n’a de valeur que lorsqu’elle sert
@@ -242,6 +244,88 @@ export default function Home() {
               </a>
             </div>
           </article>
+          {showAllProjectsLink && (
+            <div className="projects-more">
+              <Link className="button button-ghost" href="/realisations">
+                Voir toutes mes réalisations <Arrow />
+              </Link>
+            </div>
+          )}
+        </div>
+      </section>
+
+      <section className="section offers" id="offres">
+        <div className="container">
+          <div className="section-heading" data-reveal>
+            <div>
+              <span className="section-kicker">Des offres lisibles</span>
+              <h2>Vous savez ce que vous achetez, <em>dès le départ.</em></h2>
+            </div>
+            <p>
+              Chaque devis reste adapté à votre besoin, mais ces repères vous
+              permettent de situer rapidement votre projet.
+            </p>
+          </div>
+          <div className="offer-grid">
+            <article>
+              <span>Essentiel</span>
+              <h3>Site vitrine simple</h3>
+              <strong>À partir de 800 €</strong>
+              <p>Idéal pour présenter une activité, ses services et faciliter les prises de contact.</p>
+              <ul>
+                <li>Design responsive</li>
+                <li>Pages essentielles</li>
+                <li>SEO technique de base</li>
+              </ul>
+              <Link href="/site-vitrine">Découvrir l’offre <Arrow /></Link>
+            </article>
+            <article className="featured">
+              <span>Développement</span>
+              <h3>Site professionnel complet</h3>
+              <strong>À partir de 1 500 €</strong>
+              <p>Pour structurer vos services, travailler votre visibilité locale et convaincre.</p>
+              <ul>
+                <li>Pages services dédiées</li>
+                <li>SEO local et performance</li>
+                <li>Formulaire de devis</li>
+              </ul>
+              <Link href="/creation-site-internet">Découvrir l’offre <Arrow /></Link>
+            </article>
+            <article>
+              <span>Sur mesure</span>
+              <h3>Application web / outil métier</h3>
+              <strong>Sur devis</strong>
+              <p>Dashboard, espace d’administration, automatisation ou gestion de données.</p>
+              <ul>
+                <li>Cadrage fonctionnel</li>
+                <li>Interface et développement</li>
+                <li>Déploiement et suivi</li>
+              </ul>
+              <Link href="/application-web">Découvrir l’offre <Arrow /></Link>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section className="section trust" id="confiance">
+        <div className="container trust-layout">
+          <div>
+            <span className="section-kicker">Pourquoi me faire confiance ?</span>
+            <h2>Un cadre clair avant, pendant et <em>après la mise en ligne.</em></h2>
+            <p>Un projet web doit vous apporter de la sérénité, pas une nouvelle source de flou technique.</p>
+          </div>
+          <div className="trust-grid">
+            {[
+              "Devis clair et détaillé",
+              "Site responsive mobile",
+              "SEO de base inclus",
+              "Délais annoncés",
+              "Accompagnement après livraison",
+              "Maintenance mensuelle possible",
+              "Développeur diplômé Epitech",
+              "React, Vue, Next.js, PHP",
+            ].map((item) => <span key={item}>{item}</span>)}
+          </div>
         </div>
       </section>
 
@@ -335,14 +419,14 @@ export default function Home() {
           </div>
           <div className="about-copy" data-reveal>
             <p className="about-lead">
-              Je suis Quentin, développeur front-end freelance et fondateur de
-              GQIM.
+              Je suis Quentin Garcia, développeur web full-stack diplômé
+              d’Epitech et fondateur de GQIM.
             </p>
             <p>
-              J’accompagne petites et grandes entreprises dans la création de
-              produits numériques à la fois beaux, simples à utiliser et
-              techniquement solides. Vous échangez directement avec la personne
-              qui imagine et développe votre projet.
+              J’accompagne les indépendants, artisans et entreprises dans la
+              création de sites modernes, rapides et faciles à faire évoluer.
+              J’interviens à Royan, Bordeaux, en Charente-Maritime, en Gironde
+              et à distance, avec React, Vue, Next.js, TypeScript, PHP et Symfony.
             </p>
             <div className="about-values">
               <span>
@@ -358,6 +442,9 @@ export default function Home() {
                 Du brief au lancement
               </span>
             </div>
+            <Link className="text-link about-link" href="/a-propos">
+              En savoir plus sur mon parcours <Arrow />
+            </Link>
           </div>
         </div>
       </section>
@@ -368,8 +455,8 @@ export default function Home() {
           <span className="section-kicker light">Un projet en tête ?</span>
           <h2>Parlons de votre <em>projet.</em></h2>
           <p>
-            Quelques réponses suffisent pour me donner une première vision de
-            votre besoin.
+            Quelques réponses suffisent pour recevoir une première estimation
+            claire, sans engagement.
           </p>
           <ProjectQuestionnaire />
           <div className="direct-contact">
@@ -377,6 +464,10 @@ export default function Home() {
             <a href="mailto:gqinformatiques@gmail.com">gqinformatiques@gmail.com</a>
             <i />
             <a href="tel:+33644036473">06 44 03 64 73</a>
+            <i />
+            <a href="https://www.malt.fr/profile/quentingarcia" target="_blank" rel="noreferrer">Malt</a>
+            <i />
+            <a href="https://fr.linkedin.com/in/quentingar" target="_blank" rel="noreferrer">LinkedIn</a>
           </div>
         </div>
       </section>

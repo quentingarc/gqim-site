@@ -64,10 +64,10 @@ export default function Header() {
           aria-label="Navigation principale"
         >
           <Link href="/#services" onClick={close}>Services</Link>
-          <Link href="/#realisations" onClick={close}>Réalisations</Link>
+          <Link href="/realisations" onClick={close}>Réalisations</Link>
           <Link href="/#expertise" onClick={close}>Expertise</Link>
           <Link href="/methode" onClick={close}>Méthode</Link>
-          <Link href="/#apropos" onClick={close}>À propos</Link>
+          <Link href="/a-propos" onClick={close}>À propos</Link>
         </nav>
 
         <div className="header-actions">
@@ -87,7 +87,7 @@ export default function Header() {
             </svg>
           </button>
           <Link className="header-cta" href="/#contact">
-            Parlons de votre projet
+            Demander un devis
             <svg viewBox="0 0 20 20" aria-hidden="true">
               <path d="M4 10h11M11 5l5 5-5 5" />
             </svg>
