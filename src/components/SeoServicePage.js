@@ -1,23 +1,14 @@
+import Image from "next/image";
 import Link from "next/link";
+import { createServiceMetadata, withTrailingSlash } from "@/lib/seo";
+
+export { createServiceMetadata };
 
 const Arrow = () => (
   <svg viewBox="0 0 20 20" aria-hidden="true">
     <path d="M4 10h11M11 5l5 5-5 5" />
   </svg>
 );
-
-export function createServiceMetadata(service) {
-  return {
-    title: service.eyebrow,
-    description: service.description,
-    alternates: { canonical: service.slug },
-    openGraph: {
-      title: `${service.eyebrow} | GQIM`,
-      description: service.description,
-      url: service.slug,
-    },
-  };
-}
 
 export default function SeoServicePage({ service }) {
   const schema = {
@@ -32,7 +23,7 @@ export default function SeoServicePage({ service }) {
       founder: { "@type": "Person", name: "Quentin Garcia" },
       areaServed: ["Royan", "Bordeaux", "Charente-Maritime", "Gironde", "France"],
     },
-    url: `https://gqim.fr${service.slug}`,
+    url: `https://gqim.fr${withTrailingSlash(service.slug)}`,
   };
 
   const faqSchema = {
@@ -78,9 +69,9 @@ export default function SeoServicePage({ service }) {
           <aside className="seo-hero-card">
             <span>Votre projet en bref</span>
             <dl>
-              <div><dt>Budget indicatif</dt><dd>{service.price}</dd></div>
               <div><dt>Délai indicatif</dt><dd>{service.delay}</dd></div>
               <div><dt>Pour qui ?</dt><dd>{service.audience}</dd></div>
+              <div><dt>Accompagnement</dt><dd>Du cadrage à la mise en ligne</dd></div>
             </dl>
             <Link href="/#contact">Décrire mon besoin <Arrow /></Link>
           </aside>
@@ -119,20 +110,67 @@ export default function SeoServicePage({ service }) {
         </div>
       </section>
 
-      <section className="seo-section seo-proof">
-        <div className="container seo-proof-card">
-          <div>
-            <span className="section-kicker">Un exemple concret</span>
-            <h2>Des choix techniques reliés à un usage réel.</h2>
+      {service.caseStudy ? (
+        <section className="seo-section local-case-study" id="lv-jardin">
+          <div className="container">
+            <div className="local-case-heading">
+              <span className="section-kicker">Étude de cas locale</span>
+              <h2>{service.caseStudy.title}</h2>
+              <p>{service.caseStudy.summary}</p>
+            </div>
+
+            <a
+              className="local-case-visual"
+              href={service.caseStudy.siteUrl}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Visiter le site LV Jardin"
+            >
+              <Image
+                src={service.caseStudy.image}
+                alt={service.caseStudy.imageAlt}
+                width={1265}
+                height={712}
+                sizes="(max-width: 860px) 100vw, 1180px"
+              />
+              <span>Voir le site LV Jardin <Arrow /></span>
+            </a>
+
+            <div className="local-case-details">
+              {service.caseStudy.details.map((detail, index) => (
+                <article key={detail.title}>
+                  <span>0{index + 1}</span>
+                  <h3>{detail.title}</h3>
+                  <p>{detail.text}</p>
+                </article>
+              ))}
+            </div>
+
+            <div className="local-case-follow-up">
+              <strong>Suivi des résultats</strong>
+              <p>{service.caseStudy.followUp}</p>
+            </div>
           </div>
-          <div>
-            <p>{service.example}</p>
-            <Link className="button button-primary" href="/realisations">
-              Explorer les réalisations <Arrow />
-            </Link>
+        </section>
+      ) : (
+        <section className="seo-section seo-proof">
+          <div className="container seo-proof-card">
+            <div>
+              <span className="section-kicker">Un exemple concret</span>
+              <h2>Des choix techniques reliés à un usage réel.</h2>
+            </div>
+            <div>
+              <p>{service.example}</p>
+              <Link
+                className="button button-primary"
+                href={service.exampleLink?.href || "/realisations"}
+              >
+                {service.exampleLink?.label || "Explorer les réalisations"} <Arrow />
+              </Link>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       <section className="seo-section seo-faq">
         <div className="container seo-faq-layout">

@@ -55,12 +55,12 @@ export const metadata = {
   icons: {
     icon: [
       {
-        url: "/favicon-gqim.ico?v=20260716",
+        url: "/favicon-gqim-visible.ico?v=20260716b",
         type: "image/x-icon",
         sizes: "16x16 32x32 48x48 64x64 128x128 256x256",
       },
     ],
-    shortcut: "/favicon-gqim.ico?v=20260716",
+    shortcut: "/favicon-gqim-visible.ico?v=20260716b",
   },
   verification: {
     google: "dsXKuPyll9wtE-yE_jsrB5HLa78wRC6GobXEoiF8DCs",
@@ -97,7 +97,6 @@ export default function RootLayout({ children }) {
       "https://www.malt.fr/profile/quentingarcia",
       "https://fr.linkedin.com/in/quentingar",
     ],
-    priceRange: "€€",
   };
 
   return (

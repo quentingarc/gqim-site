@@ -4,12 +4,12 @@ import Link from "next/link";
 export const metadata = {
   title: "Réalisations web",
   description:
-    "Découvrez les réalisations de GQIM : site vitrine pour LV Jardin, interfaces de dashboard et projets de développement.",
+    "Découvrez les réalisations de GQIM : site vitrine pour LV Jardin et interfaces de dashboard métier.",
   alternates: { canonical: "/realisations" },
   openGraph: {
     title: "Réalisations web | GQIM",
     description:
-      "Sites vitrines, interfaces de dashboard et projets de développement réalisés par Quentin Garcia.",
+      "Site vitrine et interfaces de dashboard réalisés par Quentin Garcia.",
     url: "/realisations",
   },
 };
@@ -32,6 +32,10 @@ const projects = [
     technologies: ["Next.js", "React", "Responsive design", "SEO local"],
     kind: "image",
     href: "https://www.lv-jardin.fr/",
+    localPage: {
+      href: "/creation-site-internet-royan",
+      label: "Création de site internet à Royan",
+    },
   },
   {
     number: "02",
@@ -44,48 +48,28 @@ const projects = [
     technologies: ["Vue.js", "TypeScript", "Data visualisation", "API"],
     kind: "dashboard",
   },
-  {
-    number: "03",
-    type: "Formation · Projets en équipe",
-    title: "Projets Epitech",
-    description:
-      "Réalisation de projets techniques individuels et collectifs : architecture, algorithmie, développement web et livraison dans des contraintes proches du monde professionnel.",
-    result:
-      "Une méthode solide pour analyser un problème, collaborer et livrer un produit fonctionnel.",
-    technologies: ["C / C++", "Web", "Git", "Travail en équipe"],
-    kind: "code",
-  },
 ];
 
 function ProjectVisual({ project }) {
   if (project.kind === "image") {
     return (
       <Image
-        src="/lv-jardin-garden.webp"
-        alt="Aperçu du projet de site internet LV Jardin"
+        src="/lv-jardin-site.jpg"
+        alt="Capture du site internet LV Jardin"
         fill
         sizes="(max-width: 860px) 100vw, 52vw"
       />
     );
   }
 
-  if (project.kind === "dashboard") {
-    return (
-      <div className="case-dashboard" aria-label="Aperçu stylisé et non confidentiel d’un dashboard">
-        <div className="case-sidebar"><i /><i /><i /><i /></div>
-        <div className="case-dashboard-main">
-          <div className="case-dashboard-head"><span /><span /></div>
-          <div className="case-stats"><i /><i /><i /></div>
-          <div className="case-chart"><span /><span /><span /><span /><span /><span /></div>
-        </div>
-      </div>
-    );
-  }
-
   return (
-    <div className="case-code">
-      <span>epitech/projects</span>
-      <pre><code>{`const build = (idea) => {\n  analyse();\n  collaborate();\n  ship();\n};`}</code></pre>
+    <div className="case-dashboard" aria-label="Aperçu stylisé et non confidentiel d’un dashboard">
+      <div className="case-sidebar"><i /><i /><i /><i /></div>
+      <div className="case-dashboard-main">
+        <div className="case-dashboard-head"><span /><span /></div>
+        <div className="case-stats"><i /><i /><i /></div>
+        <div className="case-chart"><span /><span /><span /><span /><span /><span /></div>
+      </div>
     </div>
   );
 }
@@ -98,16 +82,15 @@ export default function RealisationsPage() {
           <span className="section-kicker">Portfolio</span>
           <h1>Mes réalisations en création de site web et développement d’application.</h1>
           <p>
-            Des projets publics, personnels ou présentés sans données
-            confidentielles. Pour chacun : un besoin, des choix techniques et
-            un résultat concret.
+            Des réalisations publiques ou présentées sans données confidentielles.
+            Pour chacune : un besoin, des choix techniques et un résultat concret.
           </p>
         </div>
       </section>
 
       <section className="case-list">
         <div className="container">
-          {projects.map((project, index) => (
+          {projects.map((project) => (
             <article className="case-card" key={project.title}>
               <div className={`case-visual case-visual-${project.kind}`}>
                 <ProjectVisual project={project} />
@@ -128,16 +111,23 @@ export default function RealisationsPage() {
                     <span key={technology}>{technology}</span>
                   ))}
                 </div>
-                {project.href && (
-                  <a
-                    className="text-link"
-                    href={project.href}
-                    target={project.href.startsWith("http") ? "_blank" : undefined}
-                    rel={project.href.startsWith("http") ? "noreferrer" : undefined}
-                  >
-                    Visiter le site <Arrow />
-                  </a>
-                )}
+                <div className="case-links">
+                  {project.localPage && (
+                    <Link className="text-link" href={project.localPage.href}>
+                      {project.localPage.label} <Arrow />
+                    </Link>
+                  )}
+                  {project.href && (
+                    <a
+                      className="text-link"
+                      href={project.href}
+                      target={project.href.startsWith("http") ? "_blank" : undefined}
+                      rel={project.href.startsWith("http") ? "noreferrer" : undefined}
+                    >
+                      Visiter le site <Arrow />
+                    </a>
+                  )}
+                </div>
               </div>
             </article>
           ))}

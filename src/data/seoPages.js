@@ -7,7 +7,6 @@ export const seoPages = {
       "Conception de sites vitrines rapides et optimisés pour Google, destinés aux artisans, indépendants et PME : design personnalisé, responsive et mise en ligne.",
     lead:
       "Je conçois votre site de A à Z : une structure claire, un design adapté à votre image et une base technique rapide pour transformer les visites en demandes de devis.",
-    price: "À partir de 1 500 €",
     delay: "3 à 6 semaines",
     audience: "Indépendants, artisans, TPE et PME",
     problems: [
@@ -28,8 +27,12 @@ export const seoPages = {
     ],
     example:
       "Pour LV Jardin, paysagiste à Royan, j’ai créé une vitrine claire qui valorise les prestations et facilite les demandes de contact locales.",
+    exampleLink: {
+      href: "/creation-site-internet-royan",
+      label: "Création de site internet à Royan",
+    },
     faqs: [
-      ["Combien coûte la création d’un site internet ?", "Un site vitrine simple débute à 1 500 €. Le devis final dépend du nombre de pages, des contenus et des fonctionnalités attendues."],
+      ["Comment est établi le devis d’un site internet ?", "Le devis est établi après un échange sur le nombre de pages, les contenus, les fonctionnalités et vos objectifs. Vous recevez un périmètre clair et détaillé avant le démarrage."],
       ["Pourrai-je modifier mon site ?", "Oui. La solution et le niveau d’autonomie sont définis ensemble selon vos besoins de mise à jour."],
       ["Le référencement est-il inclus ?", "La structure SEO, les balises essentielles, la performance et l’indexabilité sont incluses. Une stratégie de contenu plus poussée peut être ajoutée."],
     ],
@@ -42,7 +45,6 @@ export const seoPages = {
       "Création de site vitrine professionnel pour artisans, indépendants et petites entreprises. Design responsive, SEO de base et formulaire de devis.",
     lead:
       "Votre site vitrine devient votre meilleur commercial : il explique vos services, montre votre sérieux et permet à un prospect de vous contacter à toute heure.",
-    price: "À partir de 1 500 €",
     delay: "3 à 5 semaines",
     audience: "Artisans, consultants, commerces et professions libérales",
     problems: [
@@ -77,7 +79,6 @@ export const seoPages = {
       "Développement de dashboards, espaces clients et outils métier connectés pour centraliser les données, automatiser les tâches et accompagner vos équipes.",
     lead:
       "Je développe des outils métiers, tableaux de bord et espaces clients adaptés à votre fonctionnement, accessibles depuis un navigateur et pensés pour évoluer.",
-    price: "À partir de 5 000 €",
     delay: "6 à 16 semaines",
     audience: "Entreprises, équipes métier et porteurs de produit",
     problems: [
@@ -112,7 +113,6 @@ export const seoPages = {
       "Maintenance de site web : mises à jour, sauvegardes, corrections, sécurité, performance et évolutions pour professionnels.",
     lead:
       "Je surveille et fais évoluer votre site après sa mise en ligne pour limiter les pannes, corriger les anomalies et garder une expérience de qualité.",
-    price: "Forfait mensuel sur devis",
     delay: "Intervention planifiée ou ponctuelle",
     audience: "Entreprises disposant déjà d’un site ou d’une application",
     problems: [
@@ -147,7 +147,6 @@ export const seoPages = {
       "Référencement SEO pour sites professionnels : audit, structure, contenus, SEO local, performance et suivi d’indexation.",
     lead:
       "J’améliore la structure technique et éditoriale de votre site pour qu’il réponde aux recherches de vos prospects et soit plus facilement compris par les moteurs.",
-    price: "Audit à partir de 350 €",
     delay: "Premiers travaux en 2 à 4 semaines",
     audience: "Sites vitrines, activités locales et petites entreprises",
     problems: [
@@ -182,7 +181,6 @@ export const seoPages = {
       "Quentin Garcia accompagne agences, TPE et équipes produit en React, Next.js, Vue, TypeScript, PHP et Symfony, du cadrage jusqu’au déploiement.",
     lead:
       "Vous échangez directement avec la personne qui analyse, conçoit et développe votre solution. Moins d’intermédiaires, des choix expliqués et un suivi du brief à la mise en ligne.",
-    price: "À partir de 400 € / jour",
     delay: "Selon périmètre et disponibilité",
     audience: "TPE, PME, agences et équipes produit",
     problems: [
@@ -202,7 +200,7 @@ export const seoPages = {
       "Documentation et maintenance",
     ],
     example:
-      "Mes expériences couvrent des sites pour artisans, des interfaces de reporting, des projets de formation Epitech et des produits web nécessitant une collaboration avec des équipes métier.",
+      "Mes expériences couvrent des sites pour artisans, des interfaces de reporting et des produits web nécessitant une collaboration avec des équipes métier.",
     faqs: [
       ["Travaillez-vous à distance ?", "Oui. Je travaille à Royan, Bordeaux et à distance avec des points réguliers et des livrables partagés."],
       ["Pouvez-vous rejoindre une équipe existante ?", "Oui, pour renforcer un front-end, développer une fonctionnalité ou reprendre un périmètre clairement défini."],
@@ -212,12 +210,11 @@ export const seoPages = {
   "creation-site-internet-royan": {
     slug: "/creation-site-internet-royan",
     eyebrow: "Création de site internet à Royan",
-    title: "Un site internet professionnel pour développer votre activité à Royan.",
+    title: "Création de site internet à Royan pour développer votre activité",
     description:
       "Création de site internet à Royan pour artisans, indépendants et petites entreprises. Site vitrine, SEO local, devis et accompagnement de proximité.",
     lead:
-      "Basé entre Royan et Bordeaux, j’accompagne les professionnels de Royan et de Charente-Maritime avec un site rapide, adapté au mobile et pensé pour les recherches locales.",
-    price: "À partir de 1 500 €",
+      "Un site internet professionnel pour développer votre activité à Royan. Basé entre Royan et Bordeaux, j’accompagne les professionnels de Royan et de Charente-Maritime avec un site rapide, adapté au mobile et pensé pour les recherches locales.",
     delay: "3 à 6 semaines",
     audience: "Artisans, commerces et entreprises de Royan et alentours",
     problems: [
@@ -238,6 +235,30 @@ export const seoPages = {
     ],
     example:
       "LV Jardin illustre cette approche : une vitrine dédiée au métier de paysagiste à Royan, avec des services visibles et un accès direct au contact.",
+    caseStudy: {
+      title: "LV Jardin, un site vitrine pour un paysagiste à Royan",
+      summary:
+        "LV Jardin avait besoin d’une présence en ligne capable de présenter son savoir-faire, ses prestations et sa zone d’intervention tout en facilitant les appels depuis un mobile.",
+      image: "/lv-jardin-site.jpg",
+      imageAlt: "Capture du site LV Jardin, jardinier paysagiste à Royan",
+      siteUrl: "https://www.lv-jardin.fr/",
+      details: [
+        {
+          title: "Le besoin initial",
+          text: "Rendre l’activité immédiatement compréhensible, valoriser les réalisations paysagères et proposer un accès direct au contact pour les prospects de Royan et des alentours.",
+        },
+        {
+          title: "Les pages créées",
+          text: "Accueil, prestations, réalisations et à propos, complétées par des pages dédiées à l’aménagement paysager, l’entretien de jardin, l’élagage et le nettoyage extérieur.",
+        },
+        {
+          title: "Les optimisations SEO locales",
+          text: "Un titre et un H1 centrés sur Royan, des pages par prestation locale, des liens internes descriptifs et une structure adaptée aux recherches sur mobile.",
+        },
+      ],
+      followUp:
+        "Les données Search Console seront publiées lorsqu’elles seront suffisamment significatives pour présenter un résultat fiable, avec l’accord du client.",
+    },
     faqs: [
       ["Intervenez-vous uniquement à Royan ?", "Non. J’accompagne aussi les professionnels de Charente-Maritime, de Gironde et partout en France à distance."],
       ["Pouvez-vous m’aider avec ma fiche Google ?", "Oui, je peux vous guider pour structurer une fiche complète et cohérente avec le contenu de votre site."],
@@ -252,7 +273,6 @@ export const seoPages = {
       "Création de site internet à Bordeaux pour indépendants, artisans, TPE et PME : site vitrine, performance, SEO local et accompagnement.",
     lead:
       "J’accompagne les professionnels de Bordeaux et de Gironde dans la création ou la refonte d’un site moderne, différenciant et construit pour générer des prises de contact.",
-    price: "À partir de 1 500 €",
     delay: "3 à 6 semaines",
     audience: "Indépendants, artisans, TPE et PME de Bordeaux",
     problems: [

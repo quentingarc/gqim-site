@@ -164,6 +164,11 @@ export default function Home() {
                 <Link href={service.slug}>
                   Découvrir ce service <Arrow />
                 </Link>
+                {service.localLink && (
+                  <Link className="service-local-link" href={service.localLink.href}>
+                    {service.localLink.label}
+                  </Link>
+                )}
               </article>
             ))}
           </div>
@@ -262,15 +267,15 @@ export default function Home() {
               <h2>Vous savez ce que vous achetez, <em>dès le départ.</em></h2>
             </div>
             <p>
-              Chaque devis reste adapté à votre besoin, mais ces repères vous
-              permettent de situer rapidement votre projet.
+              Chaque projet est cadré selon votre besoin, vos contenus et les
+              fonctionnalités réellement utiles à votre activité.
             </p>
           </div>
           <div className="offer-grid">
             <article>
               <span>Essentiel</span>
               <h3>Site vitrine simple</h3>
-              <strong>À partir de 800 €</strong>
+              <strong>Une présence claire et efficace</strong>
               <p>Idéal pour présenter une activité, ses services et faciliter les prises de contact.</p>
               <ul>
                 <li>Design responsive</li>
@@ -282,7 +287,7 @@ export default function Home() {
             <article className="featured">
               <span>Développement</span>
               <h3>Site professionnel complet</h3>
-              <strong>À partir de 1 500 €</strong>
+              <strong>Visibilité locale et conversion</strong>
               <p>Pour structurer vos services, travailler votre visibilité locale et convaincre.</p>
               <ul>
                 <li>Pages services dédiées</li>
@@ -294,7 +299,7 @@ export default function Home() {
             <article>
               <span>Sur mesure</span>
               <h3>Application web / outil métier</h3>
-              <strong>Sur devis</strong>
+              <strong>Des fonctionnalités adaptées à votre métier</strong>
               <p>Dashboard, espace d’administration, automatisation ou gestion de données.</p>
               <ul>
                 <li>Cadrage fonctionnel</li>

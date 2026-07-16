@@ -2,6 +2,10 @@ export const services = {
   sitesInternet: {
     number: "01",
     slug: "/creation-site-internet",
+    localLink: {
+      href: "/creation-site-internet-royan",
+      label: "Création de site internet à Royan",
+    },
     iconKey: "site",
     eyebrow: "Sites internet",
     summary:

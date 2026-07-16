@@ -9,8 +9,8 @@ function sendEvent(name, props) {
   }
 }
 
-export function trackProjectRequest({ project, budget, timeline }) {
-  sendEvent("Demande préparée", { project, budget, timeline });
+export function trackProjectRequest({ project, timeline }) {
+  sendEvent("Demande préparée", { project, timeline });
 }
 
 export default function Analytics({ scriptUrl }) {
@@ -39,7 +39,7 @@ export default function Analytics({ scriptUrl }) {
 
   return (
     <>
-      <Script id="plausible-queue" strategy="beforeInteractive">
+      <Script id="plausible-queue" strategy="afterInteractive">
         {`window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};plausible.init()`}
       </Script>
       <Script src={scriptUrl} strategy="afterInteractive" />

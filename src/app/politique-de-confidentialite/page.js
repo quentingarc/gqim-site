@@ -35,7 +35,7 @@ export default function PrivacyPage() {
           <h2>Données concernées et finalités</h2>
           <p>
             Le questionnaire de projet peut contenir votre nom, adresse e-mail,
-            entreprise, type de projet, objectif, budget, calendrier et message
+            entreprise, type de projet, objectif, calendrier et message
             libre. Ces informations servent uniquement à comprendre votre
             besoin, vous répondre, préparer un devis et assurer le suivi de la
             relation commerciale.

@@ -11,10 +11,16 @@ export default function Header() {
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
+    const themeFrame = window.requestAnimationFrame(() => {
+      setTheme(document.documentElement.dataset.theme || "light");
+    });
+
     onScroll();
-    setTheme(document.documentElement.dataset.theme || "light");
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      window.cancelAnimationFrame(themeFrame);
+      window.removeEventListener("scroll", onScroll);
+    };
   }, []);
 
   useEffect(() => {

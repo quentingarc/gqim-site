@@ -27,29 +27,6 @@ const questionnaireSteps = [
       "Créer un outil métier",
     ],
   },
-  {
-    key: "budget",
-    label: "Votre cadre",
-    question: "Quel budget envisagez-vous ?",
-    choices: [
-      {
-        label: "Moins de 1 500 €",
-        sentence: "inférieur à 1 500 €",
-      },
-      {
-        label: "1 500 € – 3 000 €",
-        sentence: "compris entre 1 500 € et 3 000 €",
-      },
-      {
-        label: "3 000 € – 6 000 €",
-        sentence: "compris entre 3 000 € et 6 000 €",
-      },
-      {
-        label: "Plus de 6 000 €",
-        sentence: "supérieur à 6 000 €",
-      },
-    ],
-  },
 ];
 
 const timelines = [
@@ -77,7 +54,6 @@ export default function ProjectQuestionnaire() {
   const [form, setForm] = useState({
     project: "",
     goal: "",
-    budget: "",
     timeline: timelines[0].label,
     name: "",
     email: "",
@@ -101,9 +77,6 @@ export default function ProjectQuestionnaire() {
 
     const lowerFirst = (value) =>
       value ? value.charAt(0).toLowerCase() + value.slice(1) : "";
-    const selectedBudget = questionnaireSteps[2].choices.find(
-      (choice) => choice.label === form.budget,
-    );
     const selectedTimeline = timelines.find(
       (timeline) => timeline.label === form.timeline,
     );
@@ -123,7 +96,7 @@ export default function ProjectQuestionnaire() {
         "",
         `Je m’appelle ${form.name}${companyText}. Je souhaite vous parler d’un projet de type « ${form.project} » afin de ${lowerFirst(form.goal)}.`,
         "",
-        `Pour ce projet, j’envisage un budget ${selectedBudget?.sentence || lowerFirst(form.budget)}. Je souhaiterais idéalement le lancer ${selectedTimeline?.sentence || timelines[0].sentence}.`,
+        `Je souhaiterais idéalement lancer ce projet ${selectedTimeline?.sentence || timelines[0].sentence}.`,
         detailsText,
         "",
         `Vous pouvez me répondre directement à l’adresse ${form.email}.`,
@@ -135,7 +108,6 @@ export default function ProjectQuestionnaire() {
 
     trackProjectRequest({
       project: form.project,
-      budget: form.budget,
       timeline: form.timeline,
     });
     window.location.href = `mailto:gqinformatiques@gmail.com?subject=${subject}&body=${body}`;

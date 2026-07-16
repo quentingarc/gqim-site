@@ -23,11 +23,17 @@ export default function Footer() {
         <div className="footer-column">
           <strong>GQIM</strong>
           <Link href="/realisations">Réalisations</Link>
+          <Link href="/faq">FAQ</Link>
           <Link href="/a-propos">À propos</Link>
           <Link href="/methode">Méthode</Link>
           <a href="https://www.malt.fr/profile/quentingarcia" target="_blank" rel="noreferrer">Malt</a>
           <a href="https://fr.linkedin.com/in/quentingar" target="_blank" rel="noreferrer">LinkedIn</a>
           <a href="mailto:gqinformatiques@gmail.com">E-mail</a>
+        </div>
+        <div className="footer-column">
+          <strong>Zones d’intervention</strong>
+          <Link href="/creation-site-internet-royan">Création de site internet à Royan</Link>
+          <Link href="/creation-site-internet-bordeaux">Création de site internet à Bordeaux</Link>
         </div>
       </div>
       <div className="container footer-bottom">
