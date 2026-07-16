@@ -53,9 +53,14 @@ export const metadata = {
     images: ["/logo-background.webp"],
   },
   icons: {
-    icon: "/icon.svg",
-    shortcut: "/icon.svg",
-    apple: "/icon.svg",
+    icon: [
+      {
+        url: "/favicon-gqim.ico?v=20260716",
+        type: "image/x-icon",
+        sizes: "16x16 32x32 48x48 64x64 128x128 256x256",
+      },
+    ],
+    shortcut: "/favicon-gqim.ico?v=20260716",
   },
   verification: {
     google: "dsXKuPyll9wtE-yE_jsrB5HLa78wRC6GobXEoiF8DCs",
